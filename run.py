@@ -11,7 +11,7 @@ app = dash.Dash(name = __name__, server = server)
 app.config.supress_callback_exceptions = True
 
 path = 'data/' 
-files = os.listdir(path)
+files = os.listdir()
 files_txt = [i for i in files if i.endswith('.csv')]
 
 app.layout = html.Div(children=[
