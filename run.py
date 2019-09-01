@@ -16,11 +16,32 @@ files_txt = [i for i in files if i.endswith('.csv')]
 
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
+
     html.Div(children='''
         Dash: A web application framework for Python.
     '''),
+
+    html.Br(),
+    
+    html.Div(
+        children=[
+            html.P(
+                "Select the file to plot."
+            ),
+            dcc.Dropdown(
+                id="metric-select-dropdown",
+                options=list({"label": file, "value": file} for file in files_txt),
+                placeholder="Select a file",
+                clearable=False,
+                #value=files_txt[1],
+                )
+        ],
+        style={'width': '30%'},
+        
+    ),
+    
     dcc.Graph(
-        id='example-graph',    
+        id='example-graph',
         figure={
             'data': [
                 {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
@@ -30,14 +51,5 @@ app.layout = html.Div(children=[
                 'title': 'Dash Data Visualization'
             }
         }
-    ),
-    dcc.Input(id='my-id', value='initial value', type="text"),
-    html.Div(id='my-div')
+    )
 ])
-
-@app.callback(
-    Output(component_id='my-div', component_property='children'),
-    [Input(component_id='my-id', component_property='value')]
-)
-def update_output_div(input_value):
-    return 'You\'ve entered "{}"'.format(input_value)
