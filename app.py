@@ -40,12 +40,17 @@ app.layout = html.Div(children=[
                 placeholder="Select a file",
                 clearable=False,
                 #value=files_txt[1],
-                ),
+            ),
+
+            dcc.Dropdown(
+                id='columns-dropdown'
+            ),
+
         ],
         style={'width': '30%'},       
     ),
 
-    html.Div( id = 'columns-select' ),
+#    html.Div( id = 'columns-select' ),
     
     dcc.Graph(
         id='example-graph',
@@ -68,22 +73,14 @@ app.layout = html.Div(children=[
 ])
 
 @app.callback(
-    dash.dependencies.Output('columns-select', 'children'),
+    dash.dependencies.Output('columns-dropdown', 'options'),
     #dash.dependencies.Output('plot-graph', 'figure'),
     [dash.dependencies.Input('my-dropdown', 'value')])
 def columns_select(value):
     df = pd.read_csv(path + value)
     #return 'You have selected "{}"'.format(path + value)
-    return {
-        dcc.Dropdown(
-            id="columns-dropdown",
-            options=list({"label": column, "value": column} for column in df.columns),
-            placeholder="Select a file",
-            clearable=False
-            #value=files_txt[1],
-        )
-    }
-            
+    return [{"label": column, "value": column} for column in df.columns]
+    
 
 
 
@@ -97,5 +94,5 @@ def columns_select(value):
 
 
 
-#if __name__ == '__main__':
-#    app.run_server(debug=True)
+if __name__ == '__main__':
+    app.run_server(debug=True)
