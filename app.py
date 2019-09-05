@@ -79,9 +79,9 @@ def columns_select(value):
             id="columns-dropdown",
             options=list({"label": column, "value": column} for column in df.columns),
             placeholder="Select a file",
-            clearable=False,
+            clearable=False
             #value=files_txt[1],
-                ),
+        )
     }
             
 
