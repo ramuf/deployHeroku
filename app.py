@@ -54,6 +54,10 @@ app.layout = html.Div(children=[
         ],
         style={'width': '30%'},       
     ),
+
+    html.Div(
+        id = 'some-text'
+    ),
     
     dcc.Graph(
         id='example-graph',
@@ -70,19 +74,17 @@ app.layout = html.Div(children=[
     
     dcc.Graph(
         id='plot-graph'        
-    ),
+    )
 
-    html.Div(
-        id = 'some-text'
-    ) 
+
 ])
 
 @app.callback(
     dash.dependencies.Output('some-text', 'children'),
     #dash.dependencies.Output('plot-graph', 'figure'),
-    [dash.dependencies.Input('my-dropdown2', 'value')])
+    [dash.dependencies.Input('my-dropdown', 'value')])
 def update_graph(value):
-    #df = pd.read_csv(value)
+    df = pd.read_csv(value)
     return 'You have selected "{}"'.format(value)
     
 
