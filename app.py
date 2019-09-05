@@ -40,20 +40,19 @@ app.layout = html.Div(children=[
                 placeholder="Select a file",
                 clearable=False,
                 #value=files_txt[1],
-                )
-        ],
-        dcc.Dropdown(
-            id='my-dropdown2',
-            options=[
-                {'label': 'New York City', 'value': 'NYC'},
-                {'label': 'Montreal', 'value': 'MTL'},
-                {'label': 'San Francisco', 'value': 'SF'}
-            ],
-            value='NYC'
-        ),
+                ),
 
-        style={'width': '30%'},
-        
+            dcc.Dropdown(
+                id='my-dropdown2',
+                options=[
+                    {'label': 'New York City', 'value': 'NYC'},
+                    {'label': 'Montreal', 'value': 'MTL'},
+                    {'label': 'San Francisco', 'value': 'SF'}
+                ],
+                value='NYC'
+            ),
+        ],
+        style={'width': '30%'},       
     ),
     
     dcc.Graph(
