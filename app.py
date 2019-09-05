@@ -72,7 +72,7 @@ def update_graph(value):
     #return 'You have selected "{}"'.format(value)
     return {
         'data': [{
-            'type': 'bar',
+            'type': 'scatter',
             'y': df['Age']
         }],
         'layout': {
