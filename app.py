@@ -42,15 +42,23 @@ app.layout = html.Div(children=[
                 #value=files_txt[1],
             ),
 
+            html.Br(),
+
+            html.P(
+                "Select the columns to plot."
+            ),
+
             dcc.Dropdown(
-                id='columns-dropdown'
+                id='columns-dropdown',
+                #disabled=True,
+                multi=True,
             ),
 
         ],
         style={'width': '30%'},       
     ),
 
-    html.Div( id='columns-select' ),
+ #   html.Div( id='columns-select' ),
     
     dcc.Graph(
         id='example-graph',
@@ -73,23 +81,15 @@ app.layout = html.Div(children=[
 ])
 
 @app.callback(
-    dash.dependencies.Output('columns-select', 'children'),
-#    dash.dependencies.Output('columns-dropdown', 'options'),
+ #   dash.dependencies.Output('columns-select', 'children'),
+    dash.dependencies.Output('columns-dropdown', 'options'),
     #dash.dependencies.Output('plot-graph', 'figure'),
     [dash.dependencies.Input('my-dropdown', 'value')])
 def columns_select(value):
     df = pd.read_csv(path + value)
     #return 'You have selected "{}"'.format(path + value)
-    #return [{"label": column, "value": column} for column in df.columns]
-    return {
-        dcc.Dropdown(
-            id="columns-dropdown",
-            options=[{"label": column, "value": column} for column in df.columns],
-            placeholder="Select a file",
-            clearable=False,
-            multi=True,
-        )
-    }
+    return [{"label": column, "value": column} for column in df.columns]
+
     
 
 
