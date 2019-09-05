@@ -61,15 +61,23 @@ app.layout = html.Div(children=[
     
     dcc.Graph(
         id='plot-graph'        
-    )
+    ),
+
+    html.Div(
+        id = 'some-text'
+    ) 
 ])
 
 @app.callback(
-    dash.dependencies.Output('plot-graph', 'figure'),
+    dash.dependencies.Output('some-text', 'children'),
+    #dash.dependencies.Output('plot-graph', 'figure'),
     [dash.dependencies.Input('my-dropdown', 'value')])
 def update_graph(value):
     df = pd.read_csv(value)
-    #return 'You have selected "{}"'.format(value)
+    return 'You have selected "{}"'.format(value)
+    
+
+def nothing:
     return {
         'data': [{
             'type': 'scatter',
