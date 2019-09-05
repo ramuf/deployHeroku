@@ -34,6 +34,7 @@ app.layout = html.Div(children=[
             html.P(
                 "Select the file to plot."
             ),
+
             dcc.Dropdown(
                 id="my-dropdown",
                 options=list({"label": file, "value": file} for file in files_txt),
@@ -49,7 +50,7 @@ app.layout = html.Div(children=[
             dcc.Dropdown(
                 id='columns-dropdown',
                 #disabled=True,
-                multi=True,
+                #multi=True,
             ),
 
         ],
