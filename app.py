@@ -73,8 +73,16 @@ app.layout = html.Div(children=[
     [dash.dependencies.Input('my-dropdown', 'value')])
 def columns_select(value):
     df = pd.read_csv(path + value)
-    return 'You have selected "{}"'.format(path + value)
-
+    #return 'You have selected "{}"'.format(path + value)
+    return {
+        dcc.Dropdown(
+            id="columns-dropdown",
+            options=list({"label": column, "value": column} for column in df.columns),
+            placeholder="Select a file",
+            clearable=False,
+            #value=files_txt[1],
+                ),
+    }
             
 
 
