@@ -85,7 +85,7 @@ app.layout = html.Div(children=[
     [dash.dependencies.Input('my-dropdown', 'value')])
 def update_graph(value):
     #df = pd.read_csv(value)
-    return 'You have selected "{}"'.format(value)
+    return 'You have selected "{}"'.format(path + value)
     
 
 
