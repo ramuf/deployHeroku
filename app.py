@@ -39,7 +39,7 @@ app.layout = html.Div(children=[
                 options=list({"label": file, "value": file} for file in files_txt),
                 placeholder="Select a file",
                 clearable=False,
-                #value=files_txt[1],
+                value=files_txt[1],
                 ),
 
             dcc.Dropdown(
