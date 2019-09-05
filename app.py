@@ -73,7 +73,7 @@ app.layout = html.Div(children=[
     [dash.dependencies.Input('my-dropdown', 'value')])
 def columns_select(value):
     #df = pd.read_csv(path + value)
-    return "File selected."
+    return 'You have selected "{}"'.format(path + value)
             
 
 
