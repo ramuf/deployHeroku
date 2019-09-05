@@ -56,7 +56,7 @@ app.layout = html.Div(children=[
                 'title': 'Dash Data Visualization'
             }
         }
-    )
+    ),
     
     dcc.Graph(
         id='plot-graph'        
