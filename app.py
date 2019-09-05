@@ -42,6 +42,16 @@ app.layout = html.Div(children=[
                 #value=files_txt[1],
                 )
         ],
+        dcc.Dropdown(
+            id='my-dropdown2',
+            options=[
+                {'label': 'New York City', 'value': 'NYC'},
+                {'label': 'Montreal', 'value': 'MTL'},
+                {'label': 'San Francisco', 'value': 'SF'}
+            ],
+            value='NYC'
+        ),
+
         style={'width': '30%'},
         
     ),
@@ -71,7 +81,7 @@ app.layout = html.Div(children=[
 @app.callback(
     dash.dependencies.Output('some-text', 'children'),
     #dash.dependencies.Output('plot-graph', 'figure'),
-    [dash.dependencies.Input('my-dropdown', 'value')])
+    [dash.dependencies.Input('my-dropdown2', 'value')])
 def update_graph(value):
     df = pd.read_csv(value)
     return 'You have selected "{}"'.format(value)
