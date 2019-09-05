@@ -81,11 +81,20 @@ app.layout = html.Div(children=[
 
 @app.callback(
     dash.dependencies.Output('some-text', 'children'),
-    #dash.dependencies.Output('plot-graph', 'figure'),
+    dash.dependencies.Output('plot-graph', 'figure'),
     [dash.dependencies.Input('my-dropdown', 'value')])
 def update_graph(value):
     df = pd.read_csv(path + value)
-    return 'You have selected "{}"'.format(path + value)
+    #return 'You have selected "{}"'.format(path + value)
+    return {
+        'data': [{
+            'type': 'bar',
+            'y': df['Age']
+        }],
+        'layout': {
+            'title': value
+        }
+    }
     
 
 
