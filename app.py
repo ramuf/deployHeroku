@@ -34,7 +34,7 @@ app.layout = html.Div(children=[
                 "Select the file to plot."
             ),
             dcc.Dropdown(
-                id="metric-select-dropdown",
+                id="my_dropdown",
                 options=list({"label": file, "value": file} for file in files_txt),
                 placeholder="Select a file",
                 clearable=False,
@@ -56,6 +56,10 @@ app.layout = html.Div(children=[
                 'title': 'Dash Data Visualization'
             }
         }
+    )
+    
+    dcc.Graph(
+        id='plot-graph'        
     )
 ])
 
