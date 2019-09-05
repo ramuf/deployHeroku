@@ -72,8 +72,9 @@ app.layout = html.Div(children=[
     #dash.dependencies.Output('plot-graph', 'figure'),
     [dash.dependencies.Input('my-dropdown', 'value')])
 def columns_select(value):
-    #df = pd.read_csv(path + value)
+    df = pd.read_csv(path + value)
     return 'You have selected "{}"'.format(path + value)
+
             
 
 
