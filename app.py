@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 from flask import Flask
+import pandas as pd
 import os
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -34,7 +35,7 @@ app.layout = html.Div(children=[
                 "Select the file to plot."
             ),
             dcc.Dropdown(
-                id="my_dropdown",
+                id="my-dropdown",
                 options=list({"label": file, "value": file} for file in files_txt),
                 placeholder="Select a file",
                 clearable=False,
@@ -62,6 +63,13 @@ app.layout = html.Div(children=[
         id='plot-graph'        
     )
 ])
+
+@app.callback(
+    dash.dependencies.Output('plot-graph', 'children'),
+    [dash.dependencies.Input('my-dropdown', 'value')])
+def update_output(value):
+    df = pd.read_csv(value)
+    #return 'You have selected "{}"'.format(value)
 
 #if __name__ == '__main__':
 #    app.run_server(debug=True)
