@@ -1,6 +1,7 @@
-dash
+dash==1.2.0 
 dash-renderer
 dash-html-components  
 dash-core-components
 plotly
 gunicorn
+pandas
