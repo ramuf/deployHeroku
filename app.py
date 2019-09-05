@@ -41,23 +41,11 @@ app.layout = html.Div(children=[
                 clearable=False,
                 #value=files_txt[1],
                 ),
-
-            dcc.Dropdown(
-                id='my-dropdown2',
-                options=[
-                    {'label': 'New York City', 'value': 'NYC'},
-                    {'label': 'Montreal', 'value': 'MTL'},
-                    {'label': 'San Francisco', 'value': 'SF'}
-                ],
-                value='NYC'
-            ),
         ],
         style={'width': '30%'},       
     ),
 
-    html.Div(
-        id = 'some-text'
-    ),
+    html.Div( id = 'columns-select' ),
     
     dcc.Graph(
         id='example-graph',
@@ -80,9 +68,34 @@ app.layout = html.Div(children=[
 ])
 
 @app.callback(
-    #dash.dependencies.Output('some-text', 'children'),
-    dash.dependencies.Output('plot-graph', 'figure'),
+    dash.dependencies.Output('columns-select', 'children'),
+    #dash.dependencies.Output('plot-graph', 'figure'),
     [dash.dependencies.Input('my-dropdown', 'value')])
+    def columns_select
+        df = pd.read_csv(path + value)
+        return {
+            html.P(
+                "Select the file to plot."
+            ),
+            dcc.Dropdown(
+                id="columns-dropdown",
+                options=list({"label": column, "value": column} for column in df.columns),
+                placeholder="Select a file",
+                clearable=False,
+                #value=files_txt[1],
+            ),
+
+        } 
+
+
+
+
+
+
+
+
+
+
 def update_graph(value):
     df = pd.read_csv(path + value)
     #return 'You have selected "{}"'.format(path + value)
