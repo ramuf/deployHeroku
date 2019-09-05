@@ -42,8 +42,6 @@ app.layout = html.Div(children=[
                 #value=files_txt[1],
             ),
 
-            html.Br(),
-
             html.P(
                 "Select the columns to plot."
             ),
