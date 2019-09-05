@@ -77,16 +77,7 @@ def update_graph(value):
     return 'You have selected "{}"'.format(value)
     
 
-def nothing:
-    return {
-        'data': [{
-            'type': 'scatter',
-            'y': df['Age']
-        }],
-        'layout': {
-            'title': value
-        }
-    }
+
 
 #if __name__ == '__main__':
 #    app.run_server(debug=True)
