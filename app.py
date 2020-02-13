@@ -25,6 +25,7 @@ app.layout = html.Div(children=[
 
     html.Div(children='''
         Dash: A web application framework for Python.
+        By Ramuf
     '''),
 
     html.Br(),
